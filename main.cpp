@@ -11,7 +11,7 @@ bool IsLoggedIn() {
 	cout << "Enter password: ";
 	cin >> password;
 
-	ifstream read("data//"+username+".txt");
+	ifstream read(username + ".txt");
 	getline(read, un);
 	getline(read, pw);
 
@@ -24,7 +24,7 @@ bool IsLoggedIn() {
 }
 
 int main() {
-	int choice; 
+	int choice;
 
 	cout << "1: Register \n2: Login\nYour choice: ";
 	cin >> choice;
@@ -33,10 +33,10 @@ int main() {
 		cout << "Type your new username: "; cin >> username;
 		cout << "Type your new password: "; cin >> password;
 		ofstream file;
-		file.open("data\\" + username + ".txt");
+		file.open(username + ".txt");
 		file << username << endl << password;
 		file.close();
-
+		
 		main();
 	}
 	else if (choice == 2) {
