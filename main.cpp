@@ -22,3 +22,35 @@ bool IsLoggedIn() {
 		return false;
 	}
 }
+
+int main() {
+	int choice; 
+
+	cout << "1: Register \n2: Login\nYour choice: ";
+	cin >> choice;
+	if (choice == 1) {
+		string username, password;
+		cout << "Type your new username: "; cin >> username;
+		cout << "Type your new password: "; cin >> password;
+		ofstream file;
+		file.open("data\\" + username + ".txt");
+		file << username << endl << password;
+		file.close();
+
+		main();
+	}
+	else if (choice == 2) {
+		bool status = IsLoggedIn();
+
+		if (!status) {
+			cout << "False login" << endl;
+			system("PAUSE");
+			return 0;
+		}
+		else {
+			cout << "Succesfully logged in!" << endl;
+			system("PAUSE");
+			return 1;
+		}
+	}
+}
